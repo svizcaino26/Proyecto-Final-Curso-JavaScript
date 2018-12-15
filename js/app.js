@@ -24,7 +24,7 @@ var Calculadora = {
   key_on: document.getElementById('on'),
   key_sign: document.getElementById('sign'),
   keyboard: document.getElementsByClassName('tecla'),
-  evalArray: [],
+  evalArray: [], //Array to store aritmetic functions to evaluate
   pendingVal: undefined,
   prevVal: undefined,
   currentOperator: undefined,
@@ -34,7 +34,7 @@ var Calculadora = {
     var displayVal = Calculadora.calc_display.innerHTML;
     // var pendingVal;
     // var evalArray = [];
-    var numKeyArray = ['0','1','2','3','4','5','6','7','8','9'];
+    var numKeyArray = ['0','1','2','3','4','5','6','7','8','9']; //aux array to validate numeric keys
     switch (clickObj.target.id) { //Switch handler for mouse click events
       case 'on':
         Calculadora.calc_display.innerHTML = '0';
@@ -131,7 +131,13 @@ var Calculadora = {
         Calculadora.prevVal = displayVal;
         var result = eval(Calculadora.evalArray.join(' '));
         displayVal = result + '';
-        if (displayVal.length > 8) {
+        alert(displayVal);
+        if ((displayVal.length > 8)&&(displayVal.includes('-'))) {
+          alert('si');
+          displayVal = displayVal.slice(0, 9);
+        }
+        else {
+          alert('no');
           displayVal = displayVal.slice(0, 8);
         }
         Calculadora.calc_display.innerHTML = displayVal;
