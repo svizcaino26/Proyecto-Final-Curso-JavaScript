@@ -121,7 +121,10 @@ var Calculadora = {
         Calculadora.evalArray.push(Calculadora.prevVal);
         var result = eval(Calculadora.evalArray.join(' '));
         displayVal = result + '';
-        if (displayVal.length > 8) {
+        if ((displayVal.length > 8)&&(displayVal.includes('-'))) {
+          displayVal = displayVal.slice(0, 9);
+        }
+        else {
           displayVal = displayVal.slice(0, 8);
         }
         Calculadora.calc_display.innerHTML = displayVal;
