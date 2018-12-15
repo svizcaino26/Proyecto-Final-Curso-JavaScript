@@ -131,13 +131,10 @@ var Calculadora = {
         Calculadora.prevVal = displayVal;
         var result = eval(Calculadora.evalArray.join(' '));
         displayVal = result + '';
-        alert(displayVal);
         if ((displayVal.length > 8)&&(displayVal.includes('-'))) {
-          alert('si');
           displayVal = displayVal.slice(0, 9);
         }
         else {
-          alert('no');
           displayVal = displayVal.slice(0, 8);
         }
         Calculadora.calc_display.innerHTML = displayVal;
